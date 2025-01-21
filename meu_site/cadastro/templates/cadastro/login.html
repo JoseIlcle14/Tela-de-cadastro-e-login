@@ -1,0 +1,31 @@
+
+{% load static  %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'cadastro/login.css'%}">
+    <title>Login</title>
+</head>
+<body>
+    <h1>Faça seu Login</h1>
+    <div id="container">
+        <form action="/site/" method="post">  {% csrf_token %}
+            <label for="email">
+                <p>EMAIL</p>
+                <input type="email" name="email" id="email"  placeholder="exemplo@gmail.com">
+            </label>
+            <label for="senha">
+                <p>SENHA</p>
+                <input type="password" name="senha" id="senha" placeholder="No mínimo 8 digitos">
+            </label>
+            <div id="logar">
+                <label for="logar">
+                   <input type="submit" value="Logar">
+                </label>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

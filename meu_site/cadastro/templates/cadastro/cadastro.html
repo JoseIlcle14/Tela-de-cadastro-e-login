@@ -1,0 +1,40 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{%static 'cadastro/cadastro.css'%}">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Se cadastre agora</h1>
+    <div id="cadastro">
+        
+        <form action="/cadastro/" method="post" autocomplete="off"> {% csrf_token %}
+            <div id="campos">
+                <label for="nome_completo">
+                    <p>NOME COMPLETO</p>
+                    <input type="text" name="nome_completo" id="nome_completo" required>
+                </label>
+                <label for="email">
+                    <p>EMAIL</p>
+                    <input type="email" name="email" id="email" required placeholder="exemplo@gmail.com">
+                </label>
+                <label for="senha">
+                    <p>SENHA</p>
+                    <input type="password" name="senha" id="senha" required placeholder="No mínimo 8 digitos">
+                </label>
+            </div>
+            <div id="cadastrar">
+                <label for="cadastrar"> <input type="submit" value="CADASTRAR"></label>
+            </div>
+        </form>
+       
+    </div>
+    <div id="login">
+        <p>Já possui cadastro? Então faça o seu </p><a href="/login/" target="_blank" rel="noopener noreferrer"> Login</a>
+    </div>
+</body>
+</html>
