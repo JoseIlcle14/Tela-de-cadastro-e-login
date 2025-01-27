@@ -1,35 +1,16 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from . models import UsuariosCadastrados
 from django.contrib.auth import authenticate, login
-from django.contrib import messages
+from django.contrib.auth.models import User
 # Create your views here.
 
 
-def tabela(request):
-    users = UsuariosCadastrados.objects.all() 
-    context = {
-        'usuarios': users
-    }
-    return render(request, 'cadastro/tabela.html', context)
-
-def users_login(request):
-    if request.method == 'POST':
-        email = request.POST.get('email')
-        senha = request.POST.get('senha')
-        user = authenticate(username = email, passoword= senha)
-        if user is not None:
-            login(request, user)
-            return redirect('/site/')
-        else:
-            return HttpResponse("credenciais inválidas")
-
-    return render(request, 'cadastro/login.html' )
-
 
 def site(request):
-    return render(request, 'cadastro/site.html')
-
+    if request.user.is_authenticated():
+        return render(request, 'cadastro/site.html')
+    else:
+        return HttpResponse("falha de login")
 
 
 
@@ -43,9 +24,28 @@ def cadastro(request):
         nome_completo = request.POST.get('nome_completo')
         senha = request.POST.get('senha')
         email = request.POST.get('email')
-        if UsuariosCadastrados.objects.filter(email = email).exists():
+        
+        user = User.objects.filter(email= email).first()
+        if user:
             return HttpResponse("E-mail já cadastrado. Tente outro.")
-        else:
-            UsuariosCadastrados.objects.create(nome_completo = nome_completo, senha = senha, email = email)
-            return redirect('/tabela/')
+        
+        user = User.objects.create_user(username = nome_completo, password= senha, email = email)
+        user.save()
+        return HttpResponse("cadastrado com sucesso")
     
+
+
+def users_login(request):
+    if request.method == 'POST':
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+
+        user = authenticate(request, username = email, password= password)
+        if user:
+            login(request, user)
+            return render(request, 'cadastro/site.html')
+        else:
+            return HttpResponse(f"credenciais inválidas ")
+    else:
+        return render(request, 'cadastro/login.html' )
+

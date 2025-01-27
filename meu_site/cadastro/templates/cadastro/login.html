@@ -11,19 +11,17 @@
 <body>
     <h1>Faça seu Login</h1>
     <div id="container">
-        <form action="/site/" method="post">  {% csrf_token %}
+        <form action="/login/" method="post">  {% csrf_token %}
             <label for="email">
                 <p>EMAIL</p>
                 <input type="email" name="email" id="email"  placeholder="exemplo@gmail.com">
             </label>
             <label for="senha">
                 <p>SENHA</p>
-                <input type="password" name="senha" id="senha" placeholder="No mínimo 8 digitos">
+                <input type="password" name="password" id="senha" placeholder="No mínimo 8 digitos">
             </label>
             <div id="logar">
-                <label for="logar">
-                   <input type="submit" value="Logar">
-                </label>
+                <label for="logar"> <input type="submit" value="LOGAR"></label>
             </div>
         </form>
     </div>

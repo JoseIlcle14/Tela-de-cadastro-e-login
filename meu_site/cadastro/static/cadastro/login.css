@@ -3,6 +3,8 @@ body{
     padding: 0;
     display: grid;
     place-items: center;
+    background-color: rgb(32, 32, 206);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 #container{
@@ -15,6 +17,8 @@ body{
     justify-content: center;
     padding: 5px;
     font-size: 25px;
+    background-color: aliceblue;
+    border-radius: 10px;
 }
 #container #senha,#email{
     font-size: 15px;

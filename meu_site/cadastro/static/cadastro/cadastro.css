@@ -3,19 +3,54 @@ body{
     margin: 0;
     display: grid;
     place-items: center;
+    background-color: rgb(32, 32, 206);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 #cadastro{
     display: flex;
     justify-content: center;
     align-items: center;
     border: solid 1px black;
-    border-radius: 5px;
-    width: 250px;
-    height: 350px;
-    padding: 5px;
+    border-radius: 10px;
+    padding: 30px;
+    padding-left: 30px;
+    padding-right: 30px;
+    margin-top: 30px;
+    background-color: aliceblue;
+    font-size: 25px;
+    scale: 1.1;
 }
-
+#cadastro #campos input{
+    width: 200px;
+    height: 30px;
+}
 #cadastro #cadastrar{
-    padding-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 30px;
+}
+#cadastro #cadastrar input{
+    width: 100px;
+    height: 40px;
+    border: solid 1px black;
+    border-radius: 5px;
 }
 
+#link_login{
+    margin-top: 10px;
+    font-size: 20px;
+    color: antiquewhite;
+}
+#link_login a{
+    text-decoration:none;
+    color: rgb(0, 140, 255);
+    text-decoration: underline;
+}
+
+#titulo{
+    padding: 5px;
+    font-size: 40px;
+    color: antiquewhite;
+    font-weight: 200;
+}
