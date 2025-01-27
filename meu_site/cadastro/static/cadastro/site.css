@@ -1,0 +1,20 @@
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color:#1E2A38;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+}
+
+#container{
+    background-color:#4C697D ;
+    border-radius: 10px;
+    margin-top: 10%;
+    width: 300px;
+    padding: 10px;
+    color: rgb(204, 205, 206);
+    letter-spacing: 3px;
+    box-shadow: 0 4px 20px 5px rgba(0, 0, 0, 0.3);
+
+}

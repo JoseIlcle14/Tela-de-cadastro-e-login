@@ -3,32 +3,54 @@ body{
     padding: 0;
     display: grid;
     place-items: center;
-    background-color: rgb(32, 32, 206);
+    background-color:#1E2A38;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
-
+#titulo{
+    color:#d4d4d4;
+    letter-spacing: 3px;
+    margin-top: 50px;
+    font-size: 40px;
+}
 #container{
     margin-top: 50px;
-    border: 1px solid black;
-    width: 250px;
-    height: 350px;
+    box-shadow: 0 4px 20px 5px rgba(0, 0, 0, 0.3);
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 5px;
+    padding: 25px;
     font-size: 25px;
-    background-color: aliceblue;
+    background-color:#4C697D ;
     border-radius: 10px;
+    scale: 1.2;
 }
 #container #senha,#email{
     font-size: 15px;
 }
-
+#container input{
+    width: 200px;
+    height: 30px;
+    background-color: #B0BEC5;
+    border: 1px solid black;
+    border-radius: 5px;
+}
 #container #logar {
-    padding-left: 30%;
     padding-top: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
 }
 #container #logar input{
-    font-size: 20px;
+    font-size: 16px;
     border: 1px solid black;
+    border-radius: 5px;
+    width: 100px;
+    height: 40px;  
+    cursor: pointer;
+}
+#container p{
+    color:#d4d4d4;
+    letter-spacing: 3px;
+    
 }

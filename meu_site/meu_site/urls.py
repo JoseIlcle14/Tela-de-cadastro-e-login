@@ -20,7 +20,7 @@ from cadastro import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.cadastro ),
+    path('cadastro/', views.cadastro ),
     path('login/', views.users_login),
     path("site/", views.site),
 ]

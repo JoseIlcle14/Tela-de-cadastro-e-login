@@ -7,32 +7,11 @@ from django.contrib.auth.models import User
 
 
 def site(request):
-    if request.user.is_authenticated():
+    # if request.user.is_authenticated():
         return render(request, 'cadastro/site.html')
-    else:
-        return HttpResponse("falha de login")
+    # else:
+    #     return HttpResponse("falha de login")
 
-
-
-
-
-def cadastro(request):
-
-    if request.method == "GET":
-        return render(request, 'cadastro/cadastro.html')
-    if request.method == "POST":
-        nome_completo = request.POST.get('nome_completo')
-        senha = request.POST.get('senha')
-        email = request.POST.get('email')
-        
-        user = User.objects.filter(email= email).first()
-        if user:
-            return HttpResponse("E-mail já cadastrado. Tente outro.")
-        
-        user = User.objects.create_user(username = nome_completo, password= senha, email = email)
-        user.save()
-        return HttpResponse("cadastrado com sucesso")
-    
 
 
 def users_login(request):
@@ -48,4 +27,25 @@ def users_login(request):
             return HttpResponse(f"credenciais inválidas ")
     else:
         return render(request, 'cadastro/login.html' )
+
+
+
+def cadastro(request):
+
+    if request.method == "GET":
+        return render(request, 'cadastro/cadastro.html')
+    if request.method == "POST":
+        nome_completo = request.POST.get('nome_completo')
+        senha = request.POST.get('senha')
+        email = request.POST.get('email')
+        
+        user = User.objects.filter(email= email).first()
+        if user:
+            return render(request, 'cadastro/login.html')
+        else:
+            user = User.objects.create_user(username = nome_completo, password= senha, email = email)
+            user.save()
+        return render(request, 'cadastro/login.html')
+    
+
 
