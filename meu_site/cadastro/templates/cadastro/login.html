@@ -10,7 +10,13 @@
 </head>
 <body>
     <h1 id="titulo">FAÇA SEU LOGIN</h1>
-   
+   {% if user %}
+        <p class='msg'>{{msg}}</p>
+   {% endif %}
+   {% if userlogin %}
+   {% else %}
+        <p class = 'msg'>{{erro}}</p>
+   {% endif %}
     <div id="container">
         <form action="/login/" method="post">  {% csrf_token %}
             <label for="email">

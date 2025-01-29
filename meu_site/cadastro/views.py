@@ -7,10 +7,10 @@ from django.contrib.auth.models import User
 
 
 def site(request):
-    # if request.user.is_authenticated():
+    if request.user.is_authenticated():
         return render(request, 'cadastro/site.html')
-    # else:
-    #     return HttpResponse("falha de login")
+    else:
+        return HttpResponse("falha de login")
 
 
 
@@ -19,12 +19,16 @@ def users_login(request):
         email = request.POST.get('email')
         password = request.POST.get('password')
 
-        user = authenticate(request, username = email, password= password)
-        if user:
-            login(request, user)
+        userlogin = authenticate(request, username = email, password= password)
+        if userlogin:
+            login(request, userlogin)
             return render(request, 'cadastro/site.html')
         else:
-            return HttpResponse(f"credenciais inválidas ")
+            context ={
+                "erro" : 'Credenciais inválidas, verifique suas informações e tente novamente',
+                'userlogin' : userlogin
+            }
+            return render(request, 'cadastro/login.html' , context)
     else:
         return render(request, 'cadastro/login.html' )
 
@@ -41,11 +45,16 @@ def cadastro(request):
         
         user = User.objects.filter(email= email).first()
         if user:
-            return render(request, 'cadastro/login.html')
+            context = {
+                'msg' : 'Email ja cadstrado, por favor, faça login com a conta vinculada a esse email',
+                'user' : user
+            }
+            return render(request, 'cadastro/login.html', context)
         else:
             user = User.objects.create_user(username = nome_completo, password= senha, email = email)
             user.save()
-        return render(request, 'cadastro/login.html')
+        return render(request, 'cadastro/login.html', context)
+
     
 
 
