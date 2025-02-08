@@ -12,7 +12,8 @@
     <h1 id="titulo">CADASTRE-SE AGORA</h1>
     <div id="cadastro">
         
-        <form action="/cadastro/" method="post" autocomplete="off"> {% csrf_token %}
+        <form action="/cadastro/" method="post" autocomplete="off"> 
+        {% csrf_token %}
             <div id="campos">
                 <label for="nome_completo">
                     <p>NOME COMPLETO</p>
@@ -33,6 +34,10 @@
         </form>
        
     </div>
+    {% if user %}
+        <p>{{msg}}</p>
+    {% else %}
+    {% endif %}
     <div id="link_login">
         <p>Já possui cadastro? Então faça o seu <a href="/login/" target="_blank" rel="noopener noreferrer"> Login</a></p>
     </div>

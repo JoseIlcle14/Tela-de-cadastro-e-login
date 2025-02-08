@@ -53,7 +53,7 @@ def cadastro(request):
         else:
             user = User.objects.create_user(username = nome_completo, password= senha, email = email)
             user.save()
-        return render(request, 'cadastro/login.html', context)
+        return render(request, 'cadastro/login.html')
 
     
 
